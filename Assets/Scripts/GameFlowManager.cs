@@ -13,9 +13,10 @@ public class GameFlowManager : MonoBehaviour {
 	}
 		
 	void Update () {
+		
 		// Check for next scene indicator
-		if (Input.GetKeyDown ("n")) {
-			Application.LoadLevel (1);
+		if (Input.GetKeyDown ("t")) {
+			dungeonPlayerScene ();
 		}
 		if (Application.loadedLevel == 1 && !builtGrid) {
 			GameObject go = GameObject.Find("GridManager");
@@ -23,6 +24,11 @@ public class GameFlowManager : MonoBehaviour {
 			gc.BuildGrid ();
 			builtGrid = true;
 		}
+			
+	}
+
+	public void dungeonPlayerScene() {
+		Application.LoadLevel (1);
 	}
 
 }
