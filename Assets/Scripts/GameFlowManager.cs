@@ -27,12 +27,16 @@ public class GameFlowManager : MonoBehaviour {
 			
 	}
 
-	public void dungeonPlayerScene() {
+	public void dungeonPlayerScene () {
 		Application.LoadLevel (1);
 	}
 
-	public void dungeonEditorScene() {
-		Application.LoadLevel (0);
+	public void dungeonEditorScene () {
+		Application.LoadLevel (2);
+	}
+
+	public void loadScene (int id) {
+		Application.LoadLevel (id);
 	}
 
 }
