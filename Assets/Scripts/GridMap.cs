@@ -54,4 +54,21 @@ public class GridMap : MonoBehaviour {
 		return idChart;
 	}
 
+	public void save() {
+		SaveLoad.save (rd);
+	}
+
+	public void load() {
+		rd = SaveLoad.load ();
+		GridCreator gc = (GridCreator) gameObject.GetComponent(typeof(GridCreator));
+		GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
+
+		foreach (GameObject item in tiles)
+		{
+			Destroy(item);
+		}
+
+		gc.BuildGrid ();
+	}
+
 }
