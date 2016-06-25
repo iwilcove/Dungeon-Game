@@ -23,7 +23,8 @@ public class GridCreator : MonoBehaviour {
 				GameObject[] ids = gm.getIDChart ();
 				//Debug.Log (ids[0]);
 				Instantiate (gm.getObjectFromID (gm.getTile (x + 7, z + 7)), new Vector3 (x, 0.1f, z), Quaternion.identity);
-				//Debug.Log (gm.getObjectFromID (gm.getTile (x + 7, z + 7)));
+				Debug.Log (gm.getObjectFromID (gm.getTile (x + 7, z + 7)));
+				Debug.Log("I ran");
 			}
 		}
 	}

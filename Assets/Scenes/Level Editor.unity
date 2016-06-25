@@ -502,8 +502,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1534160781}
-        m_MethodName: dungeonPlayerScene
+      - m_Target: {fileID: 1938605185}
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -669,6 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa1fa1b98f6148c8b6d1680a71ab9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  built: 0
 --- !u!4 &1534160782
 Transform:
   m_ObjectHideFlags: 0
@@ -845,3 +846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.1
   scrollSpeed: 1
+  up: 0
+  down: 0
+  left: 0
+  right: 0
