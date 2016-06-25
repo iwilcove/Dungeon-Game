@@ -69,4 +69,10 @@ public class CameraController : MonoBehaviour {
 
 	}
 
+	public void changeScene (int id) {
+		GameObject gameFlow = GameObject.Find("GameFlow");
+		GameFlowManager gf = (GameFlowManager) gameFlow.GetComponent(typeof(GameFlowManager));
+		gf.loadScene (id);
+	}
+
 }

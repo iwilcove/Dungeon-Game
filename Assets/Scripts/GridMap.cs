@@ -5,13 +5,29 @@ public class GridMap : MonoBehaviour {
 
 	public int gridSizeX;
 	public int gridSizeZ;
+	public static GridMap instance = null;
 
 	private static int[,] gridMap;
 	private static GameObject[] idChart;
 
-	// Keep GridManager throughout all stages
+
 	void Awake() {
+
+		// Keep GridManager throughout all stages
 		DontDestroyOnLoad(transform.gameObject);
+
+		//Check if instance already exists
+		if (instance == null)
+
+			//if not, set instance to this
+			instance = this;
+
+		//If instance already exists and it's not this:
+		else if (instance != this)
+
+			//Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+			Destroy(gameObject);  
+		
 	}
 
 	// Set initial grid values
@@ -29,9 +45,11 @@ public class GridMap : MonoBehaviour {
 	}
 
 	void Update () {
-		/*if (Input.GetKeyDown ("space")) {
+		
+		if (Input.GetKeyDown ("space")) {
 			logMap ();
-		}*/
+		}
+
 	}
 
 	// Get a tile at a position

@@ -14,5 +14,12 @@ public class PlayerCameraController : MonoBehaviour {
 	void LateUpdate() {
 		transform.position = player.transform.position + offset;
 	}
+
+	public void changeScene (int id) {
+		GameObject gameFlow = GameObject.Find("GameFlow");
+		GameFlowManager gf = (GameFlowManager) gameFlow.GetComponent(typeof(GameFlowManager));
+		gf.loadScene (id);
+	}
+
 }
 
