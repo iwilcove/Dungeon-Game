@@ -37,9 +37,10 @@ public class TileManager : MonoBehaviour {
 	}
 
 	void Update () {
-		
+
 		// Place tile
 		if (Application.loadedLevel == 2) {
+			//Debug.Log (touchingMe);
 			if (Input.GetMouseButtonDown (0) && touchingMe) {
 				GameObject go = GameObject.Find ("GridManager");
 				GridMap gm = (GridMap)go.GetComponent (typeof(GridMap));
