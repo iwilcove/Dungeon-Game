@@ -7,7 +7,6 @@ public class GameFlowManager : MonoBehaviour {
 
 	private bool built = false;
 
-
 	void Awake() {
 
 		// Keep GameFlow throughout all stages
