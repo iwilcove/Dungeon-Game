@@ -3,13 +3,10 @@ using System.Collections;
 
 public class GridMap : MonoBehaviour {
 
-	public int gridSizeX;
-	public int gridSizeZ;
-	public static GridMap instance = null;
-
-	private static int[,] gridMap;
 	private static GameObject[] idChart;
+	private RoomData rd;
 
+	public static GridMap instance = null;
 
 	void Awake() {
 
@@ -33,33 +30,20 @@ public class GridMap : MonoBehaviour {
 	// Set initial grid values
 	void Start () {
 
-		gridMap = new int[gridSizeX, gridSizeZ];
-		for (int x = 0; x < gridSizeX; x++) {
-			for (int z = 0; z < gridSizeZ; z++) {
-				gridMap [x, z] = 0;
-			}
-		}
+		rd = new RoomData (15, 15);
 
 		idChart = new GameObject[3] {(GameObject) (Resources.Load ("Empty Grid Tile")), (GameObject) (Resources.Load ("Stone Floor Tile")), (GameObject) (Resources.Load ("Lava Tile"))};
 
 	}
 
-	void Update () {
-		
-		if (Input.GetKeyDown ("space")) {
-			logMap ();
-		}
-
-	}
-
 	// Get a tile at a position
 	public int getTile (int x, int z) {
-		return gridMap [x, z];
+		return rd.getTile (x, z);
 	}
 
 	// Set a tile at a position
 	public void setTile (int x, int z, int id) {
-		gridMap [x, z] = id;
+		rd.setTile (x, z, id);
 	}
 
 	public GameObject getObjectFromID (int id) {
@@ -70,13 +54,21 @@ public class GridMap : MonoBehaviour {
 		return idChart;
 	}
 
-	// Print the grid to the debug console
-	private void logMap () {
-		for (int x = 0; x < gridSizeX; x++) {
-			for (int z = 0; z < gridSizeZ; z++) {
-				Debug.Log (gridMap[x, z]);
-			}
+	public void save() {
+		SaveLoad.save (rd);
+	}
+
+	public void load() {
+		rd = SaveLoad.load ();
+		GridCreator gc = (GridCreator) gameObject.GetComponent(typeof(GridCreator));
+		GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
+
+		foreach (GameObject item in tiles)
+		{
+			Destroy(item);
 		}
+
+		gc.BuildGrid ();
 	}
 
 }
