@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   darkness: 0.7
   placeTile: {fileID: 143832, guid: 4e790f12672614dc398b477dd4d36e5e, type: 2}
-  height: 0.2
+  height: 0.1
   id: 2
 --- !u!1001 &100100000
 Prefab:
