@@ -47,10 +47,10 @@ public class TileManager : MonoBehaviour {
 				TileManager tm = (TileManager)placeTile.GetComponent (typeof(TileManager));
 
 				gm.setTile ((int)(transform.position.x) + 7, (int)(transform.position.z) + 7, tm.id);
-				//Debug.Log (gm.getTile ((int)(transform.position.x) + 7, (int)(transform.position.z) + 7));
+				Debug.Log (gm.getTile ((int)(transform.position.x) + 7, (int)(transform.position.z) + 7));
 
 				Instantiate (placeTile, new Vector3 (transform.position.x, height, transform.position.z), Quaternion.identity);
-				Destroy (gameObject);
+				Destroy(gameObject);
 
 			}
 		}
