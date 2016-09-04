@@ -5,11 +5,17 @@ public class CameraController : MonoBehaviour {
 
 	public float moveSpeed;
 	public float scrollSpeed;
+	public int sensitivity;
 
 	private bool up;
 	private bool down;
 	private bool left;
 	private bool right;
+	private Vector3 lastMousePos = Input.mousePosition;
+	private float trueMoveSpeed;
+
+	private float rotationX = 0.0f;
+	private float rotationY = 0.0f;
 
 	void Start () {
 	
@@ -44,27 +50,38 @@ public class CameraController : MonoBehaviour {
 		if (Input.GetKeyUp ("right")) {
 			right = false;
 		}
-			
-		// Zoom
-		float scroll = Input.GetAxis("Mouse ScrollWheel");
-		transform.position = new Vector3(transform.position.x+scroll*scrollSpeed, transform.position.y+scroll*scrollSpeed, transform.position.z-scroll*scrollSpeed);
+
+		//Rotation
+		if (Input.GetMouseButton (1)) {
+			rotationX += Input.GetAxis ("Mouse X") * sensitivity;
+			rotationY += Input.GetAxis ("Mouse Y") * sensitivity;
+			Camera.main.transform.eulerAngles = new Vector3 (rotationY, rotationX, 0.0f);
+		}
 
 	}
 
 	void FixedUpdate () {
 
+		Debug.Log (trueMoveSpeed);
+
+		if (Input.GetKey (KeyCode.LeftShift)) {
+			trueMoveSpeed = moveSpeed * 2;
+		} else {
+			trueMoveSpeed = moveSpeed;
+		}
+
 		// Act on key states (movement)
 		if (up) {
-			transform.position = new Vector3(transform.position.x-moveSpeed, transform.position.y, transform.position.z+moveSpeed);
+			transform.Translate (new Vector3 (0.0f, 0.0f, trueMoveSpeed));
 		}
 		if (down) {
-			transform.position = new Vector3(transform.position.x+moveSpeed, transform.position.y, transform.position.z-moveSpeed);
+			transform.Translate (new Vector3 (0.0f, 0.0f, -1 * trueMoveSpeed));
 		}
 		if (left) {
-			transform.position = new Vector3(transform.position.x-moveSpeed, transform.position.y, transform.position.z-moveSpeed);
+			transform.Translate (new Vector3 (-1 * trueMoveSpeed, 0.0f, 0.0f));
 		}
 		if (right) {
-			transform.position = new Vector3(transform.position.x+moveSpeed, transform.position.y, transform.position.z+moveSpeed);
+			transform.Translate (new Vector3 (trueMoveSpeed, 0.0f, 0.0f));
 		}
 
 	}

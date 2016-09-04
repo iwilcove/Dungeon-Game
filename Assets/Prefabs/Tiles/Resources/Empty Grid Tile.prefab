@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6563496}
   - 23: {fileID: 2336140}
   - 114: {fileID: 11453068}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Empty Grid Tile
   m_TagString: Tag
   m_Icon: {fileID: 0}
@@ -92,6 +92,8 @@ MonoBehaviour:
   placeTile: {fileID: 140216, guid: f89b57608b7104fadaf1ca48f2aceca0, type: 2}
   height: 0.1
   id: 0
+  rend: {fileID: 0}
+  touchingMe: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

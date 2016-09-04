@@ -6,6 +6,8 @@ public class GridMap : MonoBehaviour {
 	private static GameObject[] idChart;
 	private RoomData rd;
 
+	private int size = 0;
+
 	public static GridMap instance = null;
 
 	void Awake() {
@@ -30,6 +32,12 @@ public class GridMap : MonoBehaviour {
 	// Set initial grid values
 	void Start () {
 
+		GameObject go = GameObject.Find ("GameFlow");
+		GameFlowManager gfm = (GameFlowManager)go.GetComponent (typeof(GameFlowManager));
+		//while (size == 0) {
+			//size = gfm.getRoomSize ();
+		//}
+		//rd = new RoomData (size, size);
 		rd = new RoomData (15, 15);
 
 		idChart = new GameObject[3] {(GameObject) (Resources.Load ("Empty Grid Tile")), (GameObject) (Resources.Load ("Stone Floor Tile")), (GameObject) (Resources.Load ("Lava Tile"))};
@@ -68,6 +76,7 @@ public class GridMap : MonoBehaviour {
 			Destroy(item);
 		}
 
+		//gc.BuildGrid (size);
 		gc.BuildGrid ();
 	}
 

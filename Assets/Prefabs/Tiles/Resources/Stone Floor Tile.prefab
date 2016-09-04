@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6526292}
   - 23: {fileID: 2389380}
   - 114: {fileID: 11421354}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Stone Floor Tile
   m_TagString: Tile
   m_Icon: {fileID: 0}
@@ -92,6 +92,8 @@ MonoBehaviour:
   placeTile: {fileID: 193702, guid: 9c21f2b5150224898be6bf6927b10c45, type: 2}
   height: 0.05
   id: 1
+  rend: {fileID: 0}
+  touchingMe: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

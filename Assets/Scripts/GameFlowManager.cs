@@ -6,6 +6,7 @@ public class GameFlowManager : MonoBehaviour {
 	public static GameFlowManager instance = null;
 
 	private bool built = false;
+	private int size = 0;
 
 	void Awake() {
 
@@ -27,12 +28,13 @@ public class GameFlowManager : MonoBehaviour {
 	}
 
 	void OnLevelWasLoaded () {
+
 		built = false;
 
 	}
 
 	void Update () {
-		
+
 		// Check for next scene indicator
 		if (Input.GetKeyDown ("t")) {
 			dungeonPlayerScene ();
@@ -46,10 +48,12 @@ public class GameFlowManager : MonoBehaviour {
 		}
 			
 		if (Application.loadedLevel == 2 && !built) {
-			GameObject go = GameObject.Find("GridManager");
-			GridCreator gc = (GridCreator) go.GetComponent(typeof(GridCreator));
-			gc.BuildGrid ();
-			built = true;
+			//if (size != 0) {
+				GameObject go = GameObject.Find ("GridManager");
+				GridCreator gc = (GridCreator)go.GetComponent (typeof(GridCreator));
+				gc.BuildGrid ();
+				built = true;
+			//}
 		}
 
 	}
@@ -64,6 +68,14 @@ public class GameFlowManager : MonoBehaviour {
 
 	public void loadScene (int id) {
 		Application.LoadLevel (id);
+	}
+
+	public int getRoomSize () {
+		return size;
+	}
+
+	public void setRoomSize (int s) {
+		size = s;
 	}
 
 }
